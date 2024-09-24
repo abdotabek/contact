@@ -3,6 +3,7 @@ package com.example.contac.service;
 import com.example.contac.dto.ContactDto;
 import com.example.contac.repository.ContactRepository;
 import com.example.contac.entity.Contact;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,18 +36,23 @@ public class ContactService {
         return contactRepository.findAll();
     }
 
-    public Contact updateById(Long id, Contact contact) {
+    public Contact updateById(Long id, ContactDto dto) {
         Contact result = contactRepository.findById(id).orElseThrow(null);
-        result.setName(contact.getName());
-        result.setSurname(contact.getSurname());
-        result.setPhoneNumber(contact.getPhoneNumber());
-        result.setEmail(contact.getEmail());
+        result.setName(dto.getName());
+        result.setSurname(dto.getSurname());
+        result.setPhoneNumber(dto.getPhoneNumber());
+        result.setEmail(dto.getEmail());
         contactRepository.save(result);
         return result;
     }
 
     public Contact findByNumber(String phoneNumber) {
         return contactRepository.findContactByPhoneNumber(phoneNumber);
+    }
+
+    @Transactional
+    public void deleteByPhone(String phoneNumber) {
+        contactRepository.deleteByPhoneNumber(phoneNumber);
     }
 
 }
