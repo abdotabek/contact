@@ -45,12 +45,12 @@ public class ContactController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Contact> updateById(@PathVariable("id") Long id, @RequestBody Contact contact) {
-        Contact result = contactService.updateById(id, contact);
-        result.setName(contact.getName());
-        result.setSurname(contact.getSurname());
-        result.setPhoneNumber(contact.getPhoneNumber());
-        result.setEmail(contact.getEmail());
+    public ResponseEntity<Contact> updateById(@PathVariable("id") Long id, @RequestBody ContactDto dto) {
+        Contact result = contactService.updateById(id, dto);
+        result.setName(dto.getName());
+        result.setSurname(dto.getSurname());
+        result.setPhoneNumber(dto.getPhoneNumber());
+        result.setEmail(dto.getEmail());
         return ResponseEntity.ok(result);
     }
 

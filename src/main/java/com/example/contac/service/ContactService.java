@@ -35,12 +35,12 @@ public class ContactService {
         return contactRepository.findAll();
     }
 
-    public Contact updateById(Long id, Contact contact) {
+    public Contact updateById(Long id, ContactDto dto) {
         Contact result = contactRepository.findById(id).orElseThrow(null);
-        result.setName(contact.getName());
-        result.setSurname(contact.getSurname());
-        result.setPhoneNumber(contact.getPhoneNumber());
-        result.setEmail(contact.getEmail());
+        result.setName(dto.getName());
+        result.setSurname(dto.getSurname());
+        result.setPhoneNumber(dto.getPhoneNumber());
+        result.setEmail(dto.getEmail());
         contactRepository.save(result);
         return result;
     }

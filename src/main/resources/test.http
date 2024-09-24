@@ -19,7 +19,7 @@ GET localhost:8080/api/all
 DELETE localhost:8080/api/delete/1
 
 ###Update
-PUT localhost:8080/api/update/1
+PUT localhost:8080/api/update/4
 Content-Type: application/json
 
 {
