@@ -1,0 +1,32 @@
+POST localhost:8080/api/create
+Content-Type: application/json
+
+{
+  "id": 8,
+  "name": "Sardorov",
+  "surname": "Sardor",
+  "phoneNumber": "998951254875",
+  "email": "sardor4784@gmail.com"
+}
+
+###Get by id
+GET localhost:8080/api/api/id/5
+
+###Get all contact
+GET localhost:8080/api/all
+
+###Delete
+DELETE localhost:8080/api/delete/1
+
+###Update
+PUT localhost:8080/api/update/1
+Content-Type: application/json
+
+{
+  "name": "Ali",
+  "surname": "Aliyev",
+  "phoneNumber": "998935654785",
+  "email": "abdulaziov7447@gmail.com"
+}
+###Get contact by name
+GET localhost:8080/api/api/phone/998951254875
